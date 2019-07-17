@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="author" content="Setting consultoria en T.I." />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <!-- <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" /> -->
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=medium-dpi, viewport-fit=cover" />
+
+        <link rel="stylesheet" type="text/css" href="css/index.css" /> 
+        <!-- <link rel="stylesheet"  href="css/jquery.mobile-1.0a4.1.min.css" />   -->  
+        <link rel="stylesheet" href="jquery.ui.datepicker.mobile.css" />   
+        <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script> 
+        <!-- <script src="js/jquery-1.5.min.js" type="text/javascript"></script>  -->
+        <script src="js/jquery.json-2.2.min.js" type="text/javascript"></script>
+        <script src="js/jquery.mobile-1.4.5.min.js" type="text/javascript"></script> 
+        <script type="text/javascript" src="cordova.js"></script>
+        
+        <script>
+            //reset type=date inputs to text
+            $( document ).bind( "mobileinit", function(){
+                $.mobile.page.prototype.options.degradeInputs.data = true;
+            });	
+        </script>
+
+        <link href="css/index.css" rel="stylesheet" type="text/css" />
+        <link href="css/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css" />
+        <link href="css/jquery.mobile.structure-1.4.5.min.css" rel="stylesheet" type="text/css" />
+        <link href="css/jquery.mobile.datebox-1.0.1.min.css" rel="stylesheet" type="text/css" />
+    
+        <!-- Datepicker -->         
+        <script src="jQuery.ui.datepicker.js"></script>
+        <script src="jquery.ui.datepicker.mobile.js"></script>
+                
+        <!-- <script src="js/jquery.mobile-1.0a4.1.min.js" type="text/javascript"></script>  -->
+        <script src="js/jquery.mobile.datebox-1.0.1.min.js" type="text/javascript"></script>
+        <script src="js/jquery.ba-dotimeout.min.js" type="text/javascript"></script>
+        <script src="js/utilitats.js" type="text/javascript"></script>
+        <script src="js/jstorage.js" type="text/javascript"></script>  
+        <script src="js/datos.js" type="text/javascript"></script>           
+        <script src="js/Notificacions.js" type="text/javascript"></script>  
+
+        <style type="text/css">
+            .center{
+                margin:0 auto;
+                margin-left: auto;
+                margin-right: auto;                
+                text-align: center !important
+            }
+        </style>
+
+        <title>Control Horari</title>
+    </head>
+
+    <body style="margin:auto; width: 99%;">
+
+         <div data-role="page" id="pageINICI">
+            <div id="divINICI" class="app">
+                <h1>Control Horari</h1>
+                <h4>Setting Consultoria en T.I.</h4>
+                <div id="deviceready" class="blink" style="text-align: center;">
+                    <br/>
+                    <p class="event listening">Carregant l'aplicació</p>
+                    <br/>
+                    <p class="event received">Carregant l'aplicació</p> 
+                </div>
+            </div>
+        </div>  
+
+        <!-- P R I N C I P A L  (pageSETHORA) ************************************************************************************** -->
+        <div data-role="page" id="pageSETHORA" data-theme="a" >
+            <!-- LINEA DE CABECERA -->
+            <div data-role="header" data-theme="a" style="margin-bottom: 0px; margin-top: 0px;">  
+                <table width="100%" cellpadding="0" cellspacing="0"><tr>
+                    <td style="padding: 0px; vertical-align: middle;"><img src="img/logo.png" onclick="linkWebsite();" /></td>
+                    <td style="padding: 0px; text-align: center; width: 100%;"><h3>Control Horari</h3></td>
+                    <td style="padding: 0px; text-align: right;"><a href="#panelMenu" id="botonMenu" name="botonMenu" data-iconpos="notext" data-role="button" data-inline="true" data-icon="bars" data-mini="true"></a></td>
+                </tr></table>                
+            </div>
+
+            <!-- CONTENIDO -->
+            <div data-role="content" data-theme="a">
+
+                <!-- SELECCIÓ DEL DIA-->
+                <table style="width: 100%;"><tr>
+                     <td style="width: 50%;"><label style="font-size: large; font-weight:bold;" for="inputDIA">Jornada dia</label></td>
+                     <td style="width: 50%;"><input type="date" name="inputDIA" id="inputDIA" required="required" value="" style="color: #1C3A6E" /></td> 
+                </tr></table>
+                
+                <!-- ACORDEON -->
+                <div data-role="collapsible-set" data-theme="c" data-content-theme="d" data-mini="true" style="width: 100%;" id="acordeonENTRADA_SORTIDA" name="acordeonENTRADA_SORTIDA">
+                    <!-- ACORDEON ENTRADA -->
+                    <div data-role="collapsible" id="panelENTRADA" name="panelENTRADA">
+                        <h1 style="color:#5379BC">ENTRADA</h1>
+                        <!-- PANEL D'ENTRADA -->
+                        <table style="width: 100%;" cellpadding="0" cellspacing="0">
+                            <tr><td style="width: 100%; padding: 0px;"><div style="border: 1px solid #1C3A6E; border-radius: 15px; -moz-border-radius: 15px; width: 100%;">
+                            <table style="width: 100%;" cellpadding="0" cellspacing="0">
+                                <tr><td style="text-align: center;"><label style="font-size: large; font-weight:bold; color: #5379BC;">Hora d'entrada</label></td></tr>
+                                <tr>
+                                <td style="text-align: center; width: 100%; padding: 0px;">
+                                <fieldset data-role="controlgroup" data-type="horizontal" id="cgTipoHoraENTRADA" name="cgTipoHoraENTRADA">                                
+                                        <input type="radio" name="radioENTRADA" id="radioENTRADA_HORA_ACTUAL" value="EHA" checked="checked">
+                                        <label id="labelEHA" name="labelEHA" for="radioENTRADA_HORA_ACTUAL" style="height: 60px !important; vertical-align: middle; font-size:small;"></label>
+                                        <input type="radio" name="radioENTRADA" id="radioENTRADA_HORA_DEFECTE" value="EHD">
+                                        <label id="labelEHD" name="labelEHD"  for="radioENTRADA_HORA_DEFECTE" style="height: 60px !important; vertical-align: middle; font-size:small;"></label>
+                                        <input type="radio" name="radioENTRADA" id="radioENTRADA_HORA_ALTRE" value="EHO"> 
+                                        <label id="labelEHO" name="labelEHO"  for="radioENTRADA_HORA_ALTRE" style="font-size:small;">Altre<br/>
+                                            <select name="selectHoraENTRADA" id="selectHoraENTRADA" data-mini="true" style="z-index: 500; width: 100px; font-size: small;">
+                                            </select> 
+                                        </label>                                 
+                                    </fieldset>
+                                </td>
+                                </tr>
+                                <tr>                            
+                                    <td style="text-align: center; width: 100%;">                                                                                
+                                        <img style="width: 224px;" id="botonENTRADA" name="botonENTRADA" data-role="button" src="img/ENTRADA.png" data-iconpos="notext" data-theme="" /> 
+                                    </td>   
+                                </tr></table>
+                            </div></td></tr>
+                            <tr><td>&nbsp;</td></tr>
+                        </table>
+                    </div>
+                    <!-- ACORDEON SORTIDA -->
+                    <div data-role="collapsible" id="panelSORTIDA" name="panelSORTIDA">
+                        <h1 style="color:#5379BC">SORTIDA (i temps de descans)</h1>
+                        <!-- PANEL DE SORTIDA -->
+                        <table style="width: 100%;" cellpadding="0" cellspacing="0">
+                            <tr><td style="padding: 0px; width: 100%;"><div style="width:100%; border: 1px solid #1C3A6E; border-radius: 15px;-moz-border-radius: 15px;">
+                                <table style="width: 100%; text-align: center;" cellpadding="0" cellspacing="0">
+                                    <tr><td style="text-align: center; width: 100%;">
+                                        <!-- <div style="width: 80%; border: 1px solid #FFDBD0; background-color: #FFDBD0; border-radius: 15px;-moz-border-radius: 15px; position: relative; left: 30px;"> -->
+                                            <table style="width: 100%; text-align: center;" cellpadding="0" cellspacing="0">
+                                                <tr><td style="text-align: center;"><label style="font-size: large; color:#5379BC;">Temps de descans</label></td></tr>
+                                                <tr>
+                                                    <td style="text-align: center;">
+                                                        <fieldset data-role="controlgroup" data-type="horizontal"  id="cgTipoHoraDESCANS" name="cgTipoHoraDESCANS">     
+                                                            <input type="radio" name="radioDESCANS" id="radioDESCANS_TEMPS_DEFECTE"  value="DTD" checked="checked">
+                                                            <label id="labelDTD" name="labelDTD" for="radioDESCANS_TEMPS_DEFECTE" style="height: 60px !important; vertical-align: middle; font-size:small;"></label>
+                                                            <input type="radio" name="radioDESCANS" id="radioDESCANS_TEMPS_ALTRE" value="DTO"> 
+                                                            <label id="labelDTO" name="labelDTO" for="radioDESCANS_TEMPS_ALTRE" style="font-size:small;">Altre<br/> 
+                                                                <select name="selecTempsDESCANS" id="selecTempsDESCANS" data-mini="true" style="z-index: 500; height: 20px; font-size:small;">
+                                                                </select> 
+                                                            </label>
+                                                        </fieldset>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        <!-- </div> -->
+                                    </td></tr>
+                                    <tr><td style="text-align: center;" ><label style="font-size: large; font-weight:bold; color:#5379BC">Hora de sortida</label></td></tr>
+                                    <tr>
+                                        <td  style="text-align: center; padding: 0px; width: 100%;">
+                                            <fieldset data-role="controlgroup" data-type="horizontal" id="cgTipoHoraSORTIDA" name="cgTipoHoraSORTIDA">                                
+                                                <input type="radio" name="radioSORTIDA" id="radioSORTIDA_HORA_ACTUAL" value="SHA" checked="checked">
+                                                <label id="labelSHA" name="labelSHA" for="radioSORTIDA_HORA_ACTUAL" style="height: 60px !important; vertical-align: middle; font-size:small;"></label>
+                                                <input type="radio" name="radioSORTIDA" id="radioSORTIDA_HORA_DEFECTE" value="SHD">
+                                                <label id="labelSHD" name="labelSHD" for="radioSORTIDA_HORA_DEFECTE" style="height: 60px !important; vertical-align: middle; font-size:small;"></label>
+                                                <input type="radio" name="radioSORTIDA" id="radioSORTIDA_HORA_ALTRE" value="SHO"> 
+                                                <label id="labelSHO" name="labelSHO" for="radioSORTIDA_HORA_ALTRE" style="font-size:small;">Altre<br/> 
+                                                    <select name="selectHoraSORTIDA" id="selectHoraSORTIDA" data-mini="true" style="z-index: 500; font-size:small;">
+                                                    </select> 
+                                                </label>
+                                            </fieldset>
+                                        </td>
+                                    </tr>
+                                    <tr>                            
+                                        <td style="text-align: center; width: 100%;">                                            
+                                            <img style="width: 224px;" id="botonSORTIDA" name="botonSORTIDA" data-role="button" src="img/SORTIDA.png" data-iconpos="notext" data-theme="" /> 
+                                            <!-- <a href="#pageCONFIRMACIO"><img src="img/SORTIDA.png" width="282px"></a> -->
+                                        </td>   
+                                    </tr>
+                                </table>
+                            </div></td></tr>
+                        </table>
+                    </div>
+                </div> <!-- acordeon -->
+
+                <a href="#" id="aBottom" name="aBottom"></a>
+            </div>
+            
+            <!-- LINEA DE PIE DE PÁGINA -->
+            <div data-role="footer" id="divPie" name="divPie" data-theme="a" style="border: 0px; font-size: xx-small; text-align: right; width: 100%; position: fixed; bottom: 1px;">
+                <table style="width: 100%;">
+                    <tr>
+                        <td id="tdPie" name="tdPie" style="text-align:left;"></td>
+                        <td style="text-align: right;">&copy;&nbsp;2019 Setting consultoria en T.I. &nbsp;&nbsp;</td>
+                    </tr>
+                </table>             
+            </div>
+
+            <!-- M E N Ú   ************************************************************************************** -->
+            <div data-role="panel" id="panelMenu" data-position="right" style="background-color:silver">
+                <table style="width: 100%;">
+                    <tr><td style="background-color: white; text-align: center"><img src="img/logo_OK.png"/></td></tr>
+                    <tr><td>&nbsp;</td></tr>
+                    <tr><td style="color:#5379BC">
+                        <a href="#pageCONFIGURACIO" data-role="button" data-icon="gear" style="background-color: #5379BC; color:white">Configuració</a>
+                    </td></tr>
+                    <tr><td style="color:#5379BC">
+                        <a href="#pageHISTORIC" data-role="button" data-icon="bullets" style="background-color: #5379BC; color:white">Històric</a>
+                    </td></tr>
+                </table>
+            </div>   
+
+        </div>
+
+        <!-- C O N F I R M A C I Ó  ************************************************************************************** -->
+        <div data-role="page" id="pageCONFIRMACIO" data-theme="a" > 
+                <!-- LINEA DE CABECERA -->
+                <div data-role="header" data-theme="a" style="margin-bottom: 0px; margin-top: 0px;">  
+                    <table width="100%" cellpadding="0" cellspacing="0"><tr>
+                        <td style="padding: 0px; vertical-align: middle;"><img src="img/Atras.png" onclick="IrPantallaInicio();" /></td>
+                        <td style="padding: 0px; text-align: center; width: 100%;"><h3>Control Horari</h3></td>                   
+                    </tr></table>                
+                </div>
+    
+                <!-- CONTENIDO -->
+                <div data-role="content" data-theme="a" id="divConfirmar" name="divConfirmar">
+                    <center><h4 style="color:#1C3A6E;">CONFIRMACIÓ DE LES DADES QUE S'ENVIARAN</h4>
+                        <table>
+                            <thead><tr style="height: 0px"><th>&nbsp;</th><th>&nbsp;</th></tr></thead>
+                            <tfoot><tr>
+                                <td style="text-align: left;">
+                                    <!-- <a id="botonCancelaCONFIRMAR" name="botonCancelaCONFIRMAR" class="ui-btn ui-btn-b ui-btn ui-icon-delete ui-btn-icon-left" href="#" data-mini="true" style="background-color: silver;">CANCELAR</a> -->
+                                </td>
+                                <td style="text-align: right;"><a id="botonEnviaCONFIRMAR" name="botonEnviaCONFIRMAR" class="ui-btn ui-btn-a ui-btn ui-icon-check ui-btn-icon-left" href="#" data-mini="true">ENVIAR</a></td>
+                            </tr></tfoot>
+                            <tbody>
+                                <tr><td id="tdACCIO" name="tdACCIO" colspan="2" style="font-weight: bold; text-align: center;"><label style="font-weight: bold; font-size:large; color:black;" id="labelAccio" name="labelAccio"></label></td></tr>
+                                <tr>
+                                    <!-- <td id="tdTempsDiaH" name="tdTempsDiaH" style="text-align: left; font-weight: bold; font-size: large; color:#5379BC"><label style="font-weight: bold;">Temps empleat</label></td> -->
+                                    <td colspan="2" id="tdTempsDiaB" name="tdTempsDiaB" style="text-align: center; color:#5379BC;"><label style="font-weight: bold; font-size: x-large;" id="labelTEMPSDIA" name="labelTEMPSDIA">0</label></td>
+                                </tr>                                 
+                                <tr><td style="font-weight: bold; text-align: left;">Usuari</td><td style="text-align: left;"><label id="labelUSU" name="labelUSU"></label></td></tr>
+                                <tr><td style="font-weight: bold; text-align: left;">Dia</td><td style="text-align: left;"><label id="labelDIA" name="labelDIA"></label></td></tr>
+                                <tr><td style="font-weight: bold; text-align: left;">Hora</td><td style="text-align: left;"><label id="labelHORA" name="labelHORA"></label></td></tr>
+                                <tr><td id="tdDescansH" name="tdDescansH" style="font-weight: bold; text-align: left;">Descans</td>
+                                    <td id="tdDescansB" name="tdDescansB" style="text-align: left;"><label id="labelDESCANS" name="labelDESCANS"></label></td>
+                                </tr> 
+                                <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+                            </tbody>
+                        </table>
+                    </center>                      
+
+                </div>
+    
+                <!-- LINEA DE PIE DE PÁGINA -->
+                <div data-role="footer" id="divPie" name="divPie" data-theme="a" style="border: 0px; font-size: xx-small; text-align: right; width: 100%; position: fixed; bottom: 1px;">
+                    <table style="width: 100%;">
+                        <tr>
+                            <td id="tdPie" name="tdPie" style="text-align:left;"></td>
+                            <td style="text-align: right;">&copy;&nbsp;2019 Setting Consultoria en T.I.&nbsp;</td>
+                        </tr>
+                    </table>             
+                </div>
+        </div>
+
+        <!-- C O N F I G U R A C I Ó  ************************************************************************************** -->
+        <div data-role="page" id="pageCONFIGURACIO" data-theme="a" >
+            <!-- LINEA DE CABECERA -->
+            <div data-role="header" data-theme="a" style="margin-bottom: 0px; margin-top: 0px;">  
+                <table width="100%" cellpadding="0" cellspacing="0"><tr>
+                    <td style="padding: 0px; vertical-align: middle;"><img src="img/Atras.png" onclick="IrPantallaInicio();" /></td>
+                    <td style="padding: 0px; text-align: center; width: 100%;"><h3>Control Horari</h3></td>                  
+                </tr></table>                
+            </div>
+
+            <!-- CONTENIDO -->
+            <div data-role="content" data-theme="a" data-mini="true">
+                <center><h4 style="color:#1C3A6E;">CONFIGURACIÓ</h4></center>
+                    <table>
+                        <thead><tr><th></th><th></th><th></th><th style="width: 100%"></th></tr></thead>
+                        <tfoot><tr>     
+                            <td colspan="4" style="text-align: right;">
+                                    <a id="botonGuardarCONFIGURACIO" name="botonGuardarCONFIGURACIO" class="ui-btn ui-btn-a ui-btn ui-icon-check ui-btn-icon-left" href="#" data-mini="true">GUARDAR</a>
+                                    &nbsp;
+                            </td>
+                        </tr></tfoot>
+                        <tbody>
+                            <tr><td style="font-weight: bold;">Usuari</td><td colspan="2" style="text-align: left;"><input type="text" name="inputUSUARI" id="inputUSUARI" required="required" data-mini="true" /></td><td style="width: 100%"></td></tr>
+                            <tr><td style="font-weight: bold;">Password</td><td colspan="2" style="text-align: left;"><input type="password" name="inputPASSW" id="inputPASSW" required="required" data-mini="true" /></td><td style="width: 100%"></td></tr>
+                            <tr>
+                                <td style="text-align: left;font-weight: bold;">Hora entrada</td>
+                                <td>   
+                                    <select name="selectE_H_Defecte" id="selectE_H_Defecte" data-mini="true">
+                                    </select> 
+                                </td>
+                                <td><label><input type="checkbox" id="cbE_H_Defecte" name="cbE_H_Defecte" data-mini="true">avisa'm</label></td>
+                                <td style="width: 100%"></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">Hora sortida</td>
+                                <td>
+                                    <select name="selectS_H_Defecte" id="selectS_H_Defecte" data-mini="true" >
+                                    </select>
+                                </td>
+                                <td><label><input type="checkbox" id="cbS_H_Defecte" name="cbS_H_Defecte" data-mini="true">avisa'm</label></td>
+                                <td style="width: 100%"></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">Temps descans</td>
+                                <td colspan="2">
+                                    <select name="selecT_Defecte" id="selecT_Defecte" data-mini="true">
+                                    </select>  
+                                </td>
+                                <td style="width: 100%"></td>
+                            </tr>
+                            <tr><td colspan="3"></td><td style="width: 100%"></td></tr>
+                        </tbody>
+                    </table>                                           
+            </div>
+
+            <!-- LINEA DE PIE DE PÁGINA -->
+            <div data-role="footer" id="divPie" name="divPie" data-theme="a" style="border: 0px; font-size: xx-small; text-align: right; width: 100%; position: fixed; bottom: 1px;">
+                <table style="width: 100%;">
+                    <tr>
+                        <td id="tdPie" name="tdPie" style="text-align:left;"></td>
+                        <td style="text-align: right;">&copy;&nbsp;2019 Setting&nbsp;&nbsp;</td>
+                    </tr>
+                </table>             
+            </div>
+
+        </div>
+
+        <!-- H I S T Ò R I C  ************************************************************************************** -->
+        <div data-role="page" id="pageHISTORIC" data-theme="a" >
+            <!-- LINEA DE CABECERA -->
+            <div data-role="header" data-theme="a" style="margin-bottom: 0px; margin-top: 0px;">  
+                    <table width="100%" cellpadding="0" cellspacing="0"><tr>
+                        <td style="padding: 0px; vertical-align: middle;"><img src="img/Atras.png" onclick="IrPantallaInicio();" /></td>
+                        <td style="padding: 0px; text-align: center; width: 100%;"><h3>Control Horari</h3></td>                
+                    </tr></table>                
+                </div>
+    
+                <!-- CONTENIDO -->
+                <div data-role="content" data-theme="a" style="width: 100%; font-size: small; border-left: 0px; text-align: center;">
+                        <div style="width: 80% !important;" class="center">
+                            <h4 style="color:#1C3A6E;">HISTÒRIC (darrer mes)</h4>
+                            <a onclick="ActualitzarLlistaMarcatges();" class="ui-btn ui-btn-a ui-btn ui-icon-refresh ui-btn-icon-left" href="#" data-mini="true">Actualitzar la llista</a>
+                        </div>
+                        <div id="divHistoric" name="divHistoric">
+                            <table style="padding:0 2px 0 0;" width="100%">
+                                <thead><tr style="text-align: left;"><th>Dia</th><th>ENTR</th><th>DESC</th><th>SORT</th><th>JORN</th></tr></thead>
+                                <tfoot>
+                                    <tr><td colspan="5"></td></tr>
+                                    <tr>
+                                        <!-- <td colspan="4" style="text-align: right;"><a class="ui-btn ui-btn-a ui-btn ui-icon-arrow-l ui-btn-icon-left" href="#pageSETHORA" data-mini="true" style="background-color: silver;">TORNAR</a></td>                       -->
+                                        <td></td>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    <tr><td>03/06/2019</td><td>08:30</td><td>00:30</td><td>18:00</td><td>09:00</td></tr>
+                                    <tr><td>04/06/2019</td><td>08:45</td><td>01:00</td><td>18:00</td><td>08:00</td></tr>
+                                    <tr><td>05/06/2019</td><td>08:25</td><td>00:45</td><td>17:30</td><td>08:30</td></tr>
+                                    <tr><td>03/06/2019</td><td>08:30</td><td>00:30</td><td>18:00</td><td>09:00</td></tr>
+                                    <tr><td>04/06/2019</td><td>08:45</td><td>01:00</td><td>18:00</td><td>08:00</td></tr>
+                                    <tr><td>05/06/2019</td><td>08:25</td><td>00:45</td><td>17:30</td><td>08:30</td></tr>
+                                    <tr><td colspan="4" style="text-align: right; font-weight: bold;">Temps acumulat&nbsp;</td><td style="font-weight: bold;">49:30</td></tr>
+                                </tbody>
+                            </table>                                         
+                        </div>
+                </div>
+    
+                <!-- LINEA DE PIE DE PÁGINA -->
+                <div data-role="footer" id="divPie" name="divPie" data-theme="a" style="border: 0px; font-size: xx-small; text-align: right; width: 100%; position: fixed; bottom: 1px;">
+                    <table style="width: 100%;">
+                        <tr>
+                            <td id="tdPie" name="tdPie" style="text-align:left;"></td>
+                            <td style="text-align: right;">&copy;&nbsp;2019 Setting&nbsp;&nbsp;</td>
+                        </tr>
+                    </table>             
+                </div>
+        </div>
+
+        <!-- A L E R T S  ************************************************************************************************ -->
+        <!-- MENSAJES POP UPs -->
+        <div id="Avis" name="Avis" class="blink ui-corner-all" style="display: none; border-radius: 15px; -moz-border-radius: 15px; text-align: center; background-color: silver; position: absolute; top:50%; transform: translateY(-50%); left:50%; transform: translateX(-50%);">
+            <br/>
+            <p id="pTxtAvis" name="pTxtAvis" class="event listening"></p>
+            <p><img id="imgComunica" name="imgComunica" src="img/enviant.png"></p>
+            <br/>
+        </div>
+        <div data-role="popup" id="AvisOK" name="AvisOK" data-dismissible="false" data-history="false" data-position-to="window" class="ui-content ui-corner-all" style="display: none; border-radius: 15px; -moz-border-radius: 15px; max-width:280px; color:white; background-color:#5379BC">
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right" data-mini="true">OK</a>
+            <p id="txtOK" name="txtOK">OK</p>
+        </div>               
+        <div data-role="popup" id="AvisKO" name="AvisKO" data-dismissible="false" data-history="false" data-position-to="window" class="ui-content ui-corner-all" style="display: none; border-radius: 15px; -moz-border-radius: 15px; max-width:280px; color: white; background-color:#5379BC">
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right" data-mini="true">OK</a>
+            <p id="txtKO" name="txtKO">ERROR</p>
+        </div>
+        <!-- POP UP CONFIRMACIÓ SI/NO -->    
+        <div data-role="popup" id="popConfirma" name="popConfirma" data-dismissible="false" data-history="false" data-position-to="window" class="ui-content ui-corner-all" style="display: none; width:94% !important; color:white; background-color:#5379BC; border-radius: 15px; -moz-border-radius: 15px;">    
+            <div style="background-color: #5379BC; color:white; font-weight: bold; text-align: center" data-role="header">
+                <p id="txtTitolDialog" name="txtTitolDialog"></p>
+            </div>
+            <div style="color:white; text-align: center" data-role="content">
+                <p id="txtPreguntaDialog" name="txtPreguntaDialog"></p>  
+                <table style="width: 90%;">
+                    <tr>
+                        <td style="text-align: left; width: 50%;"><a id="botonNOconfirma" name="botonNOconfirma" data-rel="back" class="ui-btn ui-btn-b ui-btn ui-icon-delete ui-btn-icon-left" href="#" data-mini="true" style="background-color: silver;">No</a></td>
+                        <td style="text-align: right; width: 50%;"><a id="botonSIconfirma" name="botonSIconfirma" class="ui-btn ui-btn-a ui-btn ui-icon-check ui-btn-icon-left" href="#" data-mini="true">Si</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+    </body>
+</html>
